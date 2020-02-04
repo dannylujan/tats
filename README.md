@@ -1,5 +1,5 @@
 # tats
-#### By Danny Lujan
+By: Danny Lujan
 
 ## TATS builds common apache rewrite rules
 
