@@ -77,7 +77,7 @@ def redirect(httpsyn, wwwyn):
    if wwwyn == "y":
       www_value=int(1)
    elif wwwyn != "":
-      www_value=int(4)
+      www_value=int(3)
 
    print ("\n")
    print rewrite_engine

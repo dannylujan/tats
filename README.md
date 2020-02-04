@@ -16,6 +16,7 @@ Choose from menu:
 ```       
 Option 2 and 3 will also allow for optional force https and option 3 will also allow for optional www forcing.
 
-### TODO: Add command line arguments
-
+### TODO: 
+Add command line arguments
+Input sanitizing
 
