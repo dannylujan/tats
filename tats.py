@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 Written By Danny Lujan, Feb. 2020
-Inspired by and idea from Andre Cherry and the music of Tatsuro Yamashita.
+Inspired by an idea from Andre Cherry and the music of Tatsuro Yamashita.
 
 TATS builds common apache rewrite rules with an easy to use menu.
 TODO: Make application functional via arguments. 
