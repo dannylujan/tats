@@ -4,8 +4,6 @@ Written By Danny Lujan, Feb. 2020
 Inspired by an idea from Andre Cherry and the music of Tatsuro Yamashita.
 
 TATS builds common apache rewrite rules with an easy to use menu.
-TODO: Make application functional via arguments. 
-Test, this is on cmd branch 
 """
 
 from string import Template
@@ -17,6 +15,29 @@ https_template = Template('RewriteRule ^ $https://$www%1%{REQUEST_URI} [L,NE,R=3
 www = ["RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]", "www.", "RewriteCond %{HTTP_HOST} ^www\.?(.+)$ [NC]", ""]
 olddomain_template = Template("RewriteCond %{HTTP_HOST} ^(.+) $olddomain")  
 newdomain_template = Template("RewriteRule ^(.*)$$ $https://$www$newdomain/$$1 [R=301,L]")
+ans_https="n"
+
+# Argparse for command line input
+import argparse
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument('-s', action='store_true', help='Display a generic force HTTPS rewrite')
+parser.add_argument('-w', action='store_true', help='Display a generic force www rewrite')
+parser.add_argument('-t', action='store_true', help='Always force https for any rewrite')
+parser.add_argument('-n', help='Create a redirect from an old domain to a new. Usage: -n [olddomain.com,newdomain.com]', type=str)
+#parser.add_argument('-t', action='store_true', help='Always force https for any rewrite')
+
+args = parser.parse_args()
+
+#if args.s:
+#   force_https()
+
+#if args.option2:
+#    ...do something
+
+#if args.option3:
+#    ...do something
 
 # Functions
 
@@ -84,5 +105,35 @@ def redirect(httpsyn, wwwyn):
    print (olddomain_template.substitute(olddomain = olddomain1))
    print (newdomain_template.substitute(https = https[https_value], www = www[www_value], newdomain = newdomain1))
 
-menu()
+def arg_redirect(old, new):
+   olddomain1 = old
+   newdomain1 = new
+
+#   if httpsyn == "y":
+#      https_value=int(1)
+#   elif httpsyn != "":
+#      https_value=int(2)
+
+#   if wwwyn == "y":
+#      www_value=int(1)
+#   elif wwwyn != "":
+#      www_value=int(3)
+
+   print ("\n")
+   print rewrite_engine
+   print (olddomain_template.substitute(olddomain = olddomain1))
+   print (newdomain_template.substitute(https = https[2], www = www[3], newdomain = newdomain1))
+
+
+if args.t:
+   ans_https="y"
+if args.s:
+   force_https()
+if args.w:
+   force_www(ans_https)
+if args.n:
+   oldnew_list = [str(item) for item in args.n.split(',')]
+   arg_redirect(oldnew_list[0], oldnew_list[1])
+else:
+   menu()
 
